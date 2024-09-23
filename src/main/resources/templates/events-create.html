@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create an event</title>
+
+    <style>
+        body {
+          text-align: center;
+        }
+        h1 {
+          color: black;
+        }
+    </style>
+</head>
+
+<body style="background-color: lightgreen;">
+<h1>Let's create an event!</h1>
+<div class="container">
+    <form role="form" method="post" th:action="@{/events/{clubId}(clubId=${clubId})}"
+          th:object="${event}">
+        <div>
+            <label for="name">Name</label>
+            <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    th:field="*{name}"
+                    placeholder="Event name">
+        </div>
+        <div>
+            <label for="photoUrl">Photo Url</label>
+            <input
+                    type="text"
+                    id="photoUrl"
+                    name="photoUrl"
+                    th:field="*{photoUrl}"
+                    placeholder="Photo Url">
+        </div>
+        <div>
+            <label for="type">Type</label>
+            <input
+                    type="text"
+                    id="type"
+                    name="type"
+                    th:field="*{type}"
+                    placeholder="Type">
+        </div>
+
+        <div>
+            <label for="startTime">Start Time</label>
+            <input
+                    type="datetime-local"
+                    id="startTime"
+                    name="startTime"
+                    th:field="*{startTime}"
+                    placeholder="Start Time">
+        </div>
+
+        <div>
+            <label for="endTime">End Time</label>
+            <input
+                    type="datetime-local"
+                    id="endTime"
+                    name="endTime"
+                    th:field="*{endTime}"
+                    placeholder="End Time">
+        </div>
+
+        <div><a href="clubs-list"><input type="submit" value="Submit"></a></div>
+    </form>
+</div>
+
+</body>
+</html>

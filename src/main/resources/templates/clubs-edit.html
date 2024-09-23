@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Club Edit</title>
+
+    <style>
+        body {
+          text-align: center;
+        }
+        h1 {
+          color: black;
+        }
+
+    </style>
+</head>
+
+<body style="background-color: lightgray;">
+<h1>Edit a club</h1>
+<div class="container">
+    <form role="form" method="post" th:action="@{/clubs/{clubId}/edit(clubId=${club.id})}"
+          th:object="${club}">
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <label for="title">Title</label>
+            <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    th:field="*{title}"
+                    placeholder="Title for the club">
+        </div>
+        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title</div>
+        <div>
+            <label for="photoUrl">Photo Url</label>
+            <input
+                    type="text"
+                    id="photoUrl"
+                    name="photoUrl"
+                    th:field="*{photoUrl}"
+                    placeholder="Photo Url">
+        </div>
+        <div th:if="${#fields.hasErrors('photoUrl')}" th:errors="*{photoUrl}">PhotoUrl</div>
+        <div>
+            <label for="content">Content</label>
+            <input
+                    type="text"
+                    id="content"
+                    name="content"
+                    th:field="*{content}"
+                    placeholder="Content">
+        </div>
+            <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Content</div>
+        <div><a href="clubs-list"><input type="submit" value="Submit"></a></div>
+    </form>
+</div>
+
+</body>
+</html>

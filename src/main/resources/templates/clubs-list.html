@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clubs</title>
+
+    <style>
+        body {
+          text-align: center;
+        }
+        h1 {
+          color: black;
+        }
+        a:hover {
+          background-color: gray;
+         }
+    </style>
+</head>
+<body style="background-color: lightgray;">
+    <h1>Welcome to Clubs!</h1>
+    <div class="table">
+        <table th:each="club: ${clubs}">
+            <tr>
+                <td><a th:href="@{/clubs/{clubId}(clubId=${club.id})}">
+                    <button type="button" th:text="${club.title}"></button></a>
+                </td>
+
+                <td><a class="btn btn-primary" th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}">
+                    Edit
+                </a></td>
+            </tr>
+            <tr>
+                <td>
+                    <a th:href="@{/clubs/{clubId}(clubId=${club.id})}">
+                        <img th:src="${club.photoUrl}" alt="This is a photo" width="500" height="400">
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

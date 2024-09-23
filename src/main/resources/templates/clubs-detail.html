@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a club</title>
+
+    <style>
+        body {
+          text-align: center;
+        }
+        h1 {
+          color: black;
+        }
+    </style>
+</head>
+
+<body style="background-color: lightgray;">
+<h1 th:text="${club.title}"></h1>
+<div th:object="${club}">
+    <a th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}"><button type="button">
+        Edit
+    </button></a>
+
+    <div>
+        <img th:src="${club.photoUrl}" alt="This is a photo" width="500" height="400">
+    </div>
+
+    <div>
+    <a th:href="@{/clubs/{clubId}/delete(clubId=${club.id})}">
+        <button type="button">
+            Delete
+        </button></a>
+    </div>
+
+    <div>
+        <a th:href="@{/events/{clubId}/new(clubId=${club.id})}">
+            <button type="button">
+                Create Event
+            </button></a>
+    </div>
+
+    <div th:each="event: ${club.events}">
+        <h1>Events</h1>
+        <h2 th:text="${event.name}"></h2>
+        <p th:text="${event.type}"></p>
+        <p th:text="${event.startTime}"></p>
+        <p th:text="${event.endTime}"></p>
+        <p><img th:src="${event.photoUrl}"></p>
+    </div>
+
+
+
+
+</div>
+<div><a href="/clubs"><input type="button" value="Back"></a></div>
+
+</body>
+</html>
